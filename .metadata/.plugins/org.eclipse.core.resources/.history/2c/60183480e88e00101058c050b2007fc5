@@ -1,0 +1,43 @@
+package com.nt.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class insertvalue {
+
+	public static void main(String[] args) {
+		
+		String URL="jdbc:mysql://localhost:3307/jdbcapp";
+		String USERNAME = "root";
+		String PASSWORD = "root";
+		try(Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD))
+		{
+		if(conn!=null) {
+			System.out.println("database is concted");
+			Statement stmt = conn.createStatement();
+			
+			int value=stmt.executeUpdate("insert into employees values('0','sham')");
+			if(value>0) {
+				System.out.println("Record Save successfully.");
+			}
+			else {
+				System.out.println("Some problem is there.");
+			}
+			ResultSet rs = stmt.executeQuery("select * from employee");
+			while (rs.next()) {
+				System.out.println("id : "+rs.getInt(1) + "\n" +"name : "+ rs.getString(2));
+			}
+		}
+		}catch (SQLException e)
+		{
+			System.out.println("database is not connect   "+e.getMessage());
+		}
+		
+
+
+	}
+
+}

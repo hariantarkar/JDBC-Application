@@ -1,0 +1,27 @@
+package com.nt.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class JdbcTest {
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+
+		String URL = "jdbc:mysql://localhost:3307/student_info";
+		String USERNAME = "root";
+		String PASSWORD = "root";
+
+//		Class.forName("com.mysql.cj.jdbc.Driver");
+
+		Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("select * from courses");
+
+		while (rs != null) {
+			System.out.println(rs.getInt(1) + "\n" + rs.getString(2));
+		}
+	}
+}

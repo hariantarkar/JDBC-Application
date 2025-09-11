@@ -1,0 +1,18 @@
+package com.nt.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class JdbcTest {
+	
+	public static void main(String[] args) throws ClassNotFoundException {
+		
+		String URL = "Jdbc:mysql://localhost:3307/student_info";
+		String USERNAME = "root";
+		String PASSWORD = "root";
+		
+		Class.forName("com.jdbc.cj.jdbc.Driver");
+		
+		Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+	}
+}

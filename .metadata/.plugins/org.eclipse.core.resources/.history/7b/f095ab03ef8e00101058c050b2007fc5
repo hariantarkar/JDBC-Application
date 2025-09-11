@@ -1,0 +1,66 @@
+package com.nt.jdbc;
+import java.util.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class insertvalue {
+
+	public static void main(String[] args) {
+		
+		Scanner sc=new Scanner(System.in);
+		String URL="jdbc:mysql://localhost:3307/jdbcapp";
+		String USERNAME = "root";
+		String PASSWORD = "root";
+	
+		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+		    System.out.println("Database is connected");
+
+		    try (Statement stmt = conn.createStatement()) {
+
+//		        int value = stmt.executeUpdate("insert into employee values('0','sham')");
+//		        if (value > 0) {
+//		            System.out.println("Record saved successfully......");
+//		        }
+//
+//		        ResultSet rs = stmt.executeQuery("select * from employee");
+//		        while (rs.next()) {
+//		            System.out.println("id : " + rs.getInt(1) + "\n" + "name : " + rs.getString(2));
+//		        }
+//		    	System.out.println("Enter employee name which you want delete employee ");
+//		    	String name=sc.nextLine();
+//		    	int value=stmt.executeUpdate("delete from employee where  name='"+name+"'");
+//		    	if(value>0)
+//		    	{
+//		    		System.out.println("employee deleted.");
+//		    	}
+//		    	else
+//		    	{
+//		    		System.out.println("employee not found");
+//		    	}
+		    	
+		    	System.out.println("Enter employee new name which you want update employee name ");
+		    	String name=sc.nextLine();
+		    	int value=stmt.executeUpdate("update  employee set  name='"+name+"'");
+		    	if(value>0)
+		    	{
+		    		System.out.println("employee updated successful.");
+		    	}
+		    	else
+		    	{
+		    		System.out.println("employee name not found");
+		    	}
+		    } catch (SQLException e) {
+		        System.out.println("SQL error statment: " + e.getMessage());
+		    }
+
+		} catch (SQLException e) {
+		    System.out.println("Database connection failed: " + e.getMessage());
+		}
+
+
+	}
+
+}
