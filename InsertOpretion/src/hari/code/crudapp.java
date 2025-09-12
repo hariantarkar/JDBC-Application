@@ -1,30 +1,36 @@
 package hari.code;
+import java.util.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 public class crudapp {
-
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+			Scanner sc=new Scanner(System.in);
+				String URL="jdbc:mysql://localhost:3307/jdbcapp";
+				String USERNAME = "root";
+				String PASSWORD = "root";
+			
+				try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+				    System.out.println("Database is connected");
 
-		//com.mysql.cj.jdbc.Driver d = new com.mysql.cj.jdbc.Driver();
-		DriverManager.registerDriver(d);
-		Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3307/jdbcapp","root","root");
-		if(conn!=null) {
-			System.out.println("Database is connected");
-			Statement stmt=conn.createStatement();
-		int value=stmt.executeUpdate("insert into employee values('ram','ram@gmail.com','1234567891')");
-		if(value>0) {
-			System.out.println("Record Save successfully......");
+				    try (Statement stmt = conn.createStatement()) {
+
+				        int value = stmt.executeUpdate("insert into employee values('0','ganu','ganu@gmail.com')");
+				        if (value > 0) {
+				            System.out.println("Record saved successfully......");
+				        }				        
+				    } catch (SQLException e) {
+				        System.out.println("SQL error statment: " + e.getMessage());
+				    }
+
+				} catch (SQLException e) {
+				    System.out.println("Database connection failed: " + e.getMessage());
+				}
+
+
+			}
+
 		}
-		else {
-			System.out.println("Some problem is there...........");
-		}
-		}
-		else {
-			System.out.println("Database is not connected");
-		}
-	}
-}
+

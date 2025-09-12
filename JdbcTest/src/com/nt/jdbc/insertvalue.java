@@ -20,33 +20,19 @@ public class insertvalue {
 
 		    try (Statement stmt = conn.createStatement()) {
 
-//		        int value = stmt.executeUpdate("insert into employee values('0','sham')");
+//		        int value = stmt.executeUpdate("insert into employee values('0','ganu')");
 //		        if (value > 0) {
 //		            System.out.println("Record saved successfully......");
 //		        }
-//
-//		        ResultSet rs = stmt.executeQuery("select * from employee");
-//		        while (rs.next()) {
-//		            System.out.println("id : " + rs.getInt(1) + "\n" + "name : " + rs.getString(2));
-//		        }
-//		    	System.out.println("Enter employee name which you want delete employee ");
-//		    	String name=sc.nextLine();
-//		    	int value=stmt.executeUpdate("delete from employee where  name='"+name+"'");
-//		    	if(value>0)
-//		    	{
-//		    		System.out.println("employee deleted.");
-//		    	}
-//		    	else
-//		    	{
-//		    		System.out.println("employee not found");
-//		    	}
+
+		        
 		    	
 		    	System.out.println("Enter the current employee name you want to update: ");
 		    	String oldName = sc.nextLine();
 		    	System.out.println("Enter employee new name ");
 		    	String name=sc.nextLine();
-		    	int value=stmt.executeUpdate("update employee set name='" + name + "' where name='" + oldName + "'");
-		    	if(value>0)
+		    	int value =stmt.executeUpdate("update employee set name='" + name + "' where name='" + oldName + "'");
+		    	if(value >0)
 		    	{
 		    		System.out.println("employee updated successful.");
 		    	}
