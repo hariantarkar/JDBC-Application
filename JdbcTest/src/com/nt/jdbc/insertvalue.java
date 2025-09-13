@@ -20,11 +20,7 @@ public class insertvalue {
 
 		    try (Statement stmt = conn.createStatement()) {
 
-//		        int value = stmt.executeUpdate("insert into employee values('0','ganu')");
-//		        if (value > 0) {
-//		            System.out.println("Record saved successfully......");
-//		        }
-
+       
 		        
 		    	
 		    	System.out.println("Enter the current employee name you want to update: ");

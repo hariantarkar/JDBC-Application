@@ -12,11 +12,11 @@ public static void main(String[] args)throws Exception  {
 	if(conn!=null)
 	{
 		Scanner sc=new Scanner(System.in);
-		System.out.println("enter name  and email");
+		System.out.println("enter employee current email which employee name update  ");
+		System.out.println("enter  employee new name");
 		String name=sc.nextLine();
 		String email=sc.nextLine();
 		
-		//PreparedStatements ps= conn.prepareStatement("update employee set name=? where email=?");
 		PreparedStatement ps = conn.prepareStatement("update employee set name=? where email=?");
 
 		ps.setString(1,name);
